@@ -25,16 +25,21 @@ public class BMI_Input_Activity extends Activity implements View.OnClickListener
 
         final EditText heightText = findViewById(R.id.height);
         final EditText weightText = findViewById(R.id.weight);
+        double height = Double.parseDouble(heightText.getText().toString());
+        double weight = Double.parseDouble(weightText.getText().toString());
 
         if (heightText.getText().toString().equals("") == true && weightText.getText().toString().equals("") == true) {
             Toast.makeText(getApplicationContext(), "未入力です", Toast.LENGTH_SHORT).show();
 
         } else {
             Intent intent = new Intent(this, BMI_Output_Activity.class);
-            double height = Double.parseDouble(heightText.getText().toString());
-            double weight = Double.parseDouble(weightText.getText().toString());
+            //double height = Double.parseDouble(heightText.getText().toString());
+            //double weight = Double.parseDouble(weightText.getText().toString());
 
-            if ((height <= 0) && (height > 999) || (weight <= 0) && (weight > 999)) {
+            if ((height <= 0) || (height > 999)) {
+                Toast.makeText(getApplicationContext(), "範囲外です", Toast.LENGTH_SHORT).show();
+
+            }else if((weight <= 0) || (weight > 999)){
                 Toast.makeText(getApplicationContext(), "範囲外です", Toast.LENGTH_SHORT).show();
 
             } else {
