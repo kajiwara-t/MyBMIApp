@@ -3,11 +3,12 @@ package com.example.sunrisesystem.mybmiapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.math.BigDecimal;
 
 public class BMI_Output_Activity extends Activity implements View.OnClickListener {
 
@@ -22,46 +23,80 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi_output);
 
-        returnBt = (Button)findViewById(R.id.outReturn1);
+        returnBt = findViewById(R.id.outReturn1);
         returnBt.setOnClickListener(this);
 
-        endButton=(Button)findViewById(R.id.outEnd);
+        endButton = findViewById(R.id.outEnd);
         endButton.setOnClickListener(this);
 
         keisan(data);
 
     }
 
+    //BMI・適正体重・適正体重との差の計算
     public void keisan (double data[]){
 
         Intent intent = getIntent();
         data[0] = intent.getDoubleExtra("Height",0);
         data[1] = intent.getDoubleExtra("Weight",0);
 
-        double num1 = data[0] * 0.01;
+        //入力身長(cm)から入力身長(m)へと変換
+        BigDecimal num1 = BigDecimal.valueOf(data[0]);
+        BigDecimal num2 = BigDecimal.valueOf(0.01);
 
-        double bmi = data[1] / (num1 * num1);
+        //計算準備
+        BigDecimal bdHeight = num1.multiply(num2);
+        BigDecimal bdWeight = BigDecimal.valueOf(data[1]);
 
-        double pbWeight = (num1 * num1) * 22;
+        //BMI計算式　BigDecimal使用
+        BigDecimal bdbmi1 = bdHeight.multiply(bdHeight);
+        BigDecimal bdbmi2 = bdWeight.divide(bdbmi1,2,BigDecimal.ROUND_HALF_UP);
+        //BMI表示用 double変換
+        double bmi = bdbmi2.doubleValue();
 
-        double difWeight = data[1] - pbWeight;
 
-        TextView textHeight = (TextView) findViewById(R.id.heightText);
+        //適正体重計算式
+        BigDecimal num22 = BigDecimal.valueOf(22);
+        BigDecimal pbWeight1 = bdbmi1.multiply(num22);
+        //適正体重表示用　double変換
+        double pbWeight = pbWeight1.doubleValue();
+
+        //現在体重と適正体重差の計算式
+        BigDecimal difWeight1 = bdWeight.subtract(pbWeight1);
+        //体重差表示用　double変換
+        double difWeight = difWeight1.doubleValue();
+
+        //身長
+        TextView textHeight = findViewById(R.id.heightText);
         textHeight.setText(String.valueOf(data[0]));
+        textHeight.setTextColor(Color.parseColor("#9933ff"));
 
-        TextView textWeight = (TextView) findViewById(R.id.weightText);
+        //体重
+        TextView textWeight = findViewById(R.id.weightText);
         textWeight.setText(String.valueOf(data[1]));
+        textWeight.setTextColor(Color.parseColor("#3333ff"));
 
-        TextView textbmi = (TextView) findViewById(R.id.bmiText);
-        textbmi.setText(String.format("%.2f",bmi));
+        //BMI
+        TextView textBmi = findViewById(R.id.bmiText);
+        textBmi.setText(String.format("%.2f",bmi));
+        textBmi.setTextColor(Color.parseColor("#3399ff"));
 
-        TextView textpbWeight = (TextView) findViewById(R.id.pbWeightText);
-        textpbWeight.setText(String.format("%.2f",pbWeight));
+        //適正体重
+        TextView textPbWeight = findViewById(R.id.pbWeightText);
+        textPbWeight.setText(String.format("%.2f",pbWeight));
+        textPbWeight.setTextColor(Color.parseColor("#33ffff"));
 
-        TextView textdiff = (TextView) findViewById(R.id.difText);
-        textdiff.setText(String.format("%.2f",difWeight));
 
-        TextView textCom = (TextView) findViewById(R.id.commentText);
+        //適正体重との差
+        TextView textDiff = findViewById(R.id.difText);
+        textDiff.setText(String.format("%.2f",difWeight));
+        textDiff.setTextColor(Color.parseColor("#33ff99"));
+
+        //コメント
+        TextView textCom = findViewById(R.id.commentText);
+        textCom.setTextColor(Color.parseColor("#33ff33"));
+
+        //算出されたBMIの数値によって分岐
         if(bmi <= 15.99){
             textCom.setText("痩せすぎ");
             textCom.setTextColor(Color.parseColor("#000000"));
@@ -91,6 +126,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
 
     }
 
+    //“やり直す”、“終了する”を選択
     public void onClick (View view){
         if(view == returnBt){
             Intent intent = new Intent(this,BMI_Input_Activity.class);
