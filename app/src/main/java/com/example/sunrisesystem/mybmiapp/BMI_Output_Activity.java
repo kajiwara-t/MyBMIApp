@@ -15,8 +15,6 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.lang.annotation.Target;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,11 +106,10 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
         //適正体重との差
         TextView textDiff = findViewById(R.id.difText);
         textDiff.setText(String.format("%.2f", difWeight));
-        textDiff.setTextColor(Color.parseColor("#33ff99"));
+        textDiff.setTextColor(Color.parseColor("#9933ff"));
 
         //コメント
         TextView textCom = findViewById(R.id.commentText);
-        textCom.setTextColor(Color.parseColor("#33ff33"));
         startMeasure();
 
 
@@ -144,9 +141,19 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
             textCom.setText("太り気味");
             textCom.setTextColor(Color.parseColor("#ffa500"));
 
-        } else if (bmi >= 30.00) {
+        } else if ((bmi >= 30.00) && (bmi <= 34.99)) {
             textCom.setText("肥満");
+            textCom.setTextColor(Color.parseColor("#ff4500"));
+
+        } else if ((bmi >=35.00) && (bmi <= 39.99)){
+            textCom.setText("超肥満");
             textCom.setTextColor(Color.parseColor("#ff0000"));
+
+        } else if (bmi >=40.00){
+            textCom.setText("Danger");
+            Shader shader = new LinearGradient(0, 0, 0, textCom.getTextSize(),
+                    Color.BLACK, Color.RED, Shader.TileMode.CLAMP);
+            textCom.getPaint().setShader(shader);
         }
     }
 
