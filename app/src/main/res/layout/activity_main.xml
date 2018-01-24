@@ -12,6 +12,7 @@
         android:layout_height="41dp"
         android:text="★★★BMI計算アプリ★★★"
         android:textSize="25sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,10 +22,11 @@
 
     <Button
         android:id="@+id/Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="スタート"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="スタート"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -33,10 +35,11 @@
 
     <Button
         android:id="@+id/End"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="終了する"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="終了する"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

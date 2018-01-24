@@ -100,7 +100,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
         //適正体重
         TextView textPbWeight = findViewById(R.id.pbWeightText);
         textPbWeight.setText(String.format("%.2f", pbWeight));
-        textPbWeight.setTextColor(Color.parseColor("#33ffff"));
+        textPbWeight.setTextColor(Color.parseColor("#3333ff"));
 
 
         //適正体重との差
@@ -159,7 +159,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
             textCom2.setText("医師の指導の下、健康管理を行ってください！");
 
         } else if (bmi >=40.00){
-            textCom.setText("DANGER");
+            textCom.setText("極大肥満");
             Shader shader = new LinearGradient(0, 0, 0, textCom.getTextSize(),
                     Color.BLACK, Color.RED, Shader.TileMode.CLAMP);
             textCom.getPaint().setShader(shader);
