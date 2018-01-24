@@ -110,6 +110,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
 
         //コメント
         TextView textCom = findViewById(R.id.commentText);
+        TextView textCom2 = findViewById(R.id.commentText2);
         startMeasure();
 
 
@@ -117,18 +118,22 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
         if (bmi <= 15.99) {
             textCom.setText("痩せすぎ");
             textCom.setTextColor(Color.parseColor("#000000"));
+            textCom2.setText("しっかりと栄養を取りましょう！");
 
         } else if ((bmi >= 16.00) && (bmi <= 16.99)) {
             textCom.setText("痩身");
             textCom.setTextColor(Color.parseColor("#191970"));
+            textCom2.setText("健康とのバランスに気を付けてください");
 
         } else if ((bmi >= 17.00) && (bmi <= 18.49)) {
             textCom.setText("痩せ気味");
             textCom.setTextColor(Color.parseColor("#0000ff"));
+            textCom2.setText("ダイエット中なら程々に");
 
         } else if ((bmi >= 18.50) && (bmi <= 21.99) || (bmi >= 22.01) && (bmi <= 24.99)) {
             textCom.setText("標準体型");
             textCom.setTextColor(Color.parseColor("#008000"));
+            textCom2.setText("このあたりを維持しましょう");
 
         } else if(bmi == 22.00) {
             textCom.setText("BMI基準体型");
@@ -136,24 +141,29 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
                     Color.parseColor("#00ff7f"), Color.parseColor("#4169e1"),
                     Shader.TileMode.CLAMP);
             textCom.getPaint().setShader(shader);
+            textCom2.setText("");
 
         } else if ((bmi >= 25.00) && (bmi <= 29.99)) {
             textCom.setText("太り気味");
             textCom.setTextColor(Color.parseColor("#ffa500"));
+            textCom2.setText("ダイエットを始めてみましょう！");
 
         } else if ((bmi >= 30.00) && (bmi <= 34.99)) {
             textCom.setText("肥満");
             textCom.setTextColor(Color.parseColor("#ff4500"));
+            textCom2.setText("今すぐにダイエットを始めましょう！");
 
         } else if ((bmi >=35.00) && (bmi <= 39.99)){
             textCom.setText("超肥満");
             textCom.setTextColor(Color.parseColor("#ff0000"));
+            textCom2.setText("医師の指導の下、健康管理を行ってください！");
 
         } else if (bmi >=40.00){
-            textCom.setText("Danger");
+            textCom.setText("DANGER");
             Shader shader = new LinearGradient(0, 0, 0, textCom.getTextSize(),
                     Color.BLACK, Color.RED, Shader.TileMode.CLAMP);
             textCom.getPaint().setShader(shader);
+            textCom2.setText("命の危険があります。今すぐに医療機関へ！");
         }
     }
 
