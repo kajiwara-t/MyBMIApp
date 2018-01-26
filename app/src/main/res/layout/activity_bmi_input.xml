@@ -4,111 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sunrisesystem.mybmiapp.BMI_Input_Activity">
+    tools:context="com.example.sunrisesystem.mybmiapp.BMI_Input_Activity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/Text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:gravity="center"
         android:text="あなたの身長と体重を入力してください"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
-
-    <EditText
-        android:id="@+id/height"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.059"
+        android:textSize="15sp"
+         />
 
     <EditText
         android:id="@+id/weight"
-        android:layout_width="80dp"
+        android:layout_width="94dp"
         android:layout_height="45dp"
+        android:layout_alignEnd="@+id/Calculation"
+        android:layout_below="@+id/Text1"
         android:ems="10"
-        android:inputType="numberDecimal"
         android:gravity="center"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.56"
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/heightView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="身長"
+        android:layout_alignStart="@+id/weightView"
+        android:layout_below="@+id/Text1"
         android:gravity="center"
+        android:text="身長"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintVertical_bias="0.30"
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/weightView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="体重"
+        android:layout_alignBaseline="@+id/weight"
+        android:layout_alignBottom="@+id/weight"
+        android:layout_alignStart="@+id/Text1"
         android:gravity="center"
+        android:text="体重"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:layout_constraintVertical_bias="0.56"
+        android:textSize="20sp"
+        />
 
     <Button
         android:id="@+id/Calculation"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="98dp"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/my_button"
         android:gravity="center"
         android:text="計算する！"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintVertical_bias="0.95"
+        android:textSize="13sp"
+        />
 
     <TextView
         android:id="@+id/heightView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cm"
+        android:layout_alignBaseline="@+id/heightView"
+        android:layout_alignBottom="@+id/heightView"
+        android:layout_alignStart="@+id/weightView2"
         android:gravity="center"
+        android:text="cm"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.711"
+        app:layout_constraintHorizontal_bias="0.823"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintVertical_bias="0.30"
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/weightView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kg"
+        android:layout_alignBaseline="@+id/weight"
+        android:layout_alignBottom="@+id/weight"
+        android:layout_toEndOf="@+id/Calculation"
         android:gravity="center"
+        android:text="kg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:layout_constraintVertical_bias="0.56"
+        android:textSize="20sp"
+        />
+
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="94dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/heightView"
+        android:layout_alignBottom="@+id/heightView"
+        android:layout_alignStart="@+id/weight"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.30"
+        android:textSize="20sp"
+        />
 
 </android.support.constraint.ConstraintLayout>

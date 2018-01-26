@@ -5,13 +5,17 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
 
     double data[] = new double[2];
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
         endButton = findViewById(R.id.outEnd);
         endButton.setOnClickListener(this);
 
+
+
         keisan(data);
 
         //計算結果表示の文字　装飾用グラデーション
@@ -48,6 +55,7 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
                 Shader.TileMode.CLAMP);
         Answer.getPaint().setShader(shader);
     }
+
 
     //BMI・適正体重・適正体重との差の計算
     public void keisan(double data[]) {
@@ -237,8 +245,6 @@ public class BMI_Output_Activity extends Activity implements View.OnClickListene
             }
         }, 0, 3400, TimeUnit.MILLISECONDS);
     }
-
-
 
     //“やり直す”、“終了する”を選択
     public void onClick(View view) {
